@@ -1,3 +1,4 @@
+#!/Users/escobar/anaconda/bin/python
 """cashcoin URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.homepage, name='home'),
     url(r'^account/', include('accounts.urls')),
+    url(r'^signup/', views.signup, name='signup'),
 ]

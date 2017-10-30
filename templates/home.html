@@ -3,12 +3,18 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<div class="jumbotron text-center">
   <h2>Sign in here</h2>
-  <form action='' method='post'>{% csrf_token %}
-    {{ form.as_p }}
+  <form action="" method="post" style="max-width:600px; margin:auto">{% csrf_token %}
+    <div class="form-group">
+      {{ form.username }}
+      {{ form.password }}
+    </div>
     {% if post_error %}
-      <p>Error. Invalid login</p>
+      <p style="color:red;">Error. Invalid login</p>
     {% endif %}
-    <button type="submit" class="btn btn-default">Log in</button>
+    <button type="submit" class="btn btn-success">Log in</button>
   </form>
+  <a href="/signup/" class="btn btn-link">Sign Up Here</a>
+</div>
 {% endblock %}

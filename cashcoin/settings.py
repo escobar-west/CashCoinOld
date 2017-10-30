@@ -1,3 +1,4 @@
+#!/Users/escobar/anaconda/bin/python
 """
 Django settings for cashcoin project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'g96$=0wk@q+379md6%mr!u-c7nr+-en7vni^)yav=mbm2vq8fk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.100', '127.0.0.1']
 
 
 # Application definition

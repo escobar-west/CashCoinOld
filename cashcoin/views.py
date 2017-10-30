@@ -1,10 +1,11 @@
+#!/Users/escobar/anaconda/bin/python
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UserForm
+from .forms import UserForm, SignupForm
 
 def homepage(request):
-    
+    render_di = {} 
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -14,13 +15,14 @@ def homepage(request):
             login(request, user)
             return HttpResponseRedirect('/account/')
         else:
-            post_error = True
+            render_di['post_error'] = True
     else:
-        post_error = False
+        render_di['post_error'] = False
 
-    form = UserForm()
-    return render(request, 'home.html', {'form': form, 'post_error': post_error})
+    render_di['form'] = UserForm()
+    return render(request, 'home.html', render_di)
 
-
-def account(request):
-    return HttpResponse('Ok, {}'.format(request.user.username))
+def signup(request):
+    render_di = {}
+    render_di['form'] = SignupForm()
+    return render(request, 'signup.html', render_di)
