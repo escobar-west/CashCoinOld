@@ -23,8 +23,13 @@
       </div>
       <!-- Modal Body -->
       <div class="modal-body">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ address }}&amp;size=200x200" alt="" title="" />
-        <p>{{ address }}</p>
+        <form action="send/", method="post" style="max-width:600px; margin:auto">{% csrf_token %}
+           <input type="text" name="address">
+           <br>
+           <input type="text" name="amount">
+           <br>
+           <button type="submit" class="btn btn-success">Log in</button>
+        </form>
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">

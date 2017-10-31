@@ -20,5 +20,20 @@ def account_view(request):
 
     render_di['bal'] = client.get_account(account.account_id).balance.amount
     render_di['address'] = client.create_address(account.account_id).address
-
+    print(account.account_id)
     return render(request, 'account.html', render_di)
+
+def send_view(request):
+    if request.method == 'POST':
+        account = Account.objects.filter(user=request.user)[0]
+        address = request.POST['address']
+        amount = float(request.POST['amount'])
+        print(account.account_id)
+        tx = client.send_money(account.account_id,
+                               to=address,
+                               amount=amount,
+                               currency='BTC')
+    
+        return HttpResponse(tx)
+    else:
+        return HttpResponse('not a post')

@@ -18,6 +18,8 @@ class UserForm(ModelForm):
                                              'placeholder':'Password',}
                                      ),
         }
+    def clean(self):
+        return super().clean()
 
 class SignupForm(UserForm):
     repeat_password = forms.CharField(widget=PasswordInput(attrs={'class':'form-control',
@@ -25,3 +27,13 @@ class SignupForm(UserForm):
                                                                  }))
     class Meta(UserForm.Meta):
         fields = UserForm.Meta.fields + ['repeat_password']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+        repeat = cleaned_data.get('repeat_password')
+
+        if password != repeat:
+            raise forms.ValidationError('Passwords do not match')
+            
