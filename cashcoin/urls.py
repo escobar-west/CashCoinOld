@@ -17,11 +17,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
-from django.views.generic.base import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.homepage, name='home'),
+    url(r'^$', views.homepage_view, name='home_view'),
+    url(r'^signup/', views.signup_view, name='signup_view'),
+    url(r'^logout/', views.logout_view, name='logout_view'),
     url(r'^account/', include('accounts.urls')),
-    url(r'^signup/', views.signup, name='signup'),
 ]

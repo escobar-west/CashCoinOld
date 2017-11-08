@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Redeem{% endblock %}
+
+{% block content %}
+<form action="" method="post" style="max-width:600px; margin:auto">{% csrf_token %}
+  <div class="form-group">
+      <input type="text" name="key_val">
+  </div>
+  {% if post_error %}
+    <p style="color:red;">Error. Invalid login</p>
+  {% endif %}
+  <button type="submit" class="btn btn-success">Redeem</button>
+</form>
+{% endblock %}
