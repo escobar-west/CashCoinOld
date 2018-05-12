@@ -5,8 +5,8 @@ from .models import Account
 from coinbase.wallet.client import Client
 
 client = Client(
-        '3tFVaskD7hLfA2b8',
-        'UFzzkgpLYSTIBYFTSgXvPaXt9KqcNKi8',
+        'XXXXXXXXX',
+        'XXXXXXXXXXXXXXXXXXXX',
         api_version='2017-10-29',)
 
 @login_required
@@ -53,7 +53,7 @@ def redeem_view(request):
             r = requests.get(url)
             btc_price = float(r.json()['result']['XXBTZUSD']['c'][0])
             btc_amt = coupon_list[0].value / btc_price
-            tx = client.transfer_money('03609ae5-9310-58b7-be2e-4754fae12e14',
+            tx = client.transfer_money('XXXXXXXXXXXXXXXXXX',
                                        to=account.account_id,
                                        amount=0.001,
                                        currency='BTC'
